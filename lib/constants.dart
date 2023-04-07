@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
-Color kPrimarycolor = Colors.lightBlueAccent;
-Color kSecoundarycolor = const Color.fromARGB(255, 120, 159, 179);
-Color kBgColor = Colors.white;
-Color kButtonColor = Colors.grey.shade200;
+Color kPrimarycolor = const Color(0xFFF26e61);
+
+Color kSecoundarycolor = const Color(0xFF8fb7ca);
+Color kBgColor = const Color(0xFFE4DCCF);
+Color kBgColorDark = const Color(0xFFe4d9c9);
+Color kTextColor = const Color(0xFF23272e);
+
+Color kButtonColor = const Color(0xFFF9F5EB);
 
 double kDefaultPadding = 20;
 
