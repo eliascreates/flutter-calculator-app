@@ -1,26 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
-enum Operator {
-  add,
-  subtract,
-  multiply,
-  divide,
-}
-
 class Calculator {
-  String result = "0";
-  String _history = "";
-
+  String result = "0", _history = "";
   String get history => _history;
+
+  static List<String> symbols = const [
+    "C",
+    "±",
+    "%",
+    "÷",
+    "9",
+    "8",
+    "7",
+    "x",
+    "6",
+    "5",
+    "4",
+    "-",
+    "3",
+    "2",
+    "1",
+    "+",
+    "0",
+    ".",
+    "<", //cancel action (backspace)
+    "="
+  ];
 
   void calculate() {
     _history = result;
     Parser p = Parser();
     String evaluate = result.replaceAll("x", "*");
     evaluate = evaluate.replaceAll("÷", "/");
-    Expression exp = p.parse(evaluate);
-    result = exp.evaluate(EvaluationType.REAL, ContextModel()).toString();
+
+    try {
+      Expression exp = p.parse(evaluate);
+
+      result = exp.evaluate(EvaluationType.REAL, ContextModel()).toString();
+    } catch (e) {
+      clear();
+    }
+
   }
 
   void clear() {
