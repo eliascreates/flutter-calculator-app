@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class Calculator {
-  String result = "0", _history = "";
+  String result = "0", operator = "", _history = "";
   String get history => _history;
 
   static List<String> symbols = const [
@@ -41,11 +41,11 @@ class Calculator {
     } catch (e) {
       clear();
     }
-
   }
 
   void clear() {
     result = "0";
+    operator = "";
   }
 
   void delete() {
@@ -53,6 +53,7 @@ class Calculator {
     if (result.isEmpty) {
       debugPrint("Is Empty");
       result = "0";
+      operator = "";
     }
   }
 }

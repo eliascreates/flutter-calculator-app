@@ -3,7 +3,6 @@ import 'package:calculator_app/models/calculator_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 class CalculatorConsole extends StatelessWidget {
   const CalculatorConsole({
     super.key,
@@ -16,6 +15,9 @@ class CalculatorConsole extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = TextEditingController();
+
+    controller.text = calculator.result;
     return Expanded(
       flex: 1,
       child: Stack(
@@ -23,11 +25,15 @@ class CalculatorConsole extends StatelessWidget {
           Positioned.fill(
             child: Container(
               color: kBgColorDark,
-              padding: EdgeInsets.all(kDefaultPadding / 2),
+              padding: EdgeInsets.symmetric(
+                  vertical: kDefaultPadding / 2,
+                  horizontal: kDefaultPadding * 0.25),
               child: Align(
                 alignment: Alignment.bottomRight,
                 child: Text(
                   calculator.result,
+                  overflow: TextOverflow.fade,
+                  maxLines: 1,
                   style: TextStyle(
                       fontSize: 30, color: kTextColor.withOpacity(0.9)),
                 ),

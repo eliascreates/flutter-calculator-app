@@ -15,7 +15,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<String> calculatorSymbols = Calculator.symbols;
   final Calculator _calculator = Calculator();
   bool _isUp = false;
-
   bool isOperator(String symbol) {
     if (symbol == "÷" ||
         symbol == "x" ||
@@ -67,7 +66,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             _calculator.result = _calculator.result
                                 .substring(0, _calculator.result.length - 1);
                           }
+
                           _calculator.result += calculatorSymbols[index];
+                          _calculator.operator = calculatorSymbols[index];
                         });
                       },
                       symbol: calculatorSymbols[index],
@@ -86,16 +87,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   } else if (index == 17) {
                     return CalculatorButton(
                         onPress: () {
-                          setState(() {
-                            //!Fix another duplicate . in value bug
-
-                            
-                            if (!(_calculator
-                                    .result[_calculator.result.length - 1] ==
-                                ".")) {
-                              _calculator.result += calculatorSymbols[index];
-                            }
-                          });
+                          setState(
+                            () {
+                              if (!_calculator.result.contains(".")) {
+                                _calculator.result += calculatorSymbols[index];
+                              } else if (_calculator.operator.isNotEmpty) {
+                                if (!_calculator.result
+                                    .substring(_calculator.result
+                                        .lastIndexOf(_calculator.operator))
+                                    .contains(".")) {
+                                  _calculator.result +=
+                                      calculatorSymbols[index];
+                                }
+                              }
+                            },
+                          );
                         },
                         symbol: calculatorSymbols[index],
                         color: kButtonColor);

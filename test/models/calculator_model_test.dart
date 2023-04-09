@@ -6,7 +6,7 @@ void main() {
   late Calculator calculator;
   setUp(() {
     calculator = Calculator();
-  });
+  }); 
   group('Calculator class -', () {
     test(
         'Given the Calculator class when clear function is called then result = 0',
