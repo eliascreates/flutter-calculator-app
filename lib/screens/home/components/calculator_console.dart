@@ -30,12 +30,19 @@ class CalculatorConsole extends StatelessWidget {
                   horizontal: kDefaultPadding * 0.25),
               child: Align(
                 alignment: Alignment.bottomRight,
-                child: Text(
-                  calculator.result,
-                  overflow: TextOverflow.fade,
+                child: TextField(
+                  controller: controller,
                   maxLines: 1,
+                  readOnly: true,
                   style: TextStyle(
-                      fontSize: 30, color: kTextColor.withOpacity(0.9)),
+                    fontSize: 30,
+                    color: kTextColor.withOpacity(0.9),
+                  ),
+                  textAlign: TextAlign.right,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.zero,
+                    border: InputBorder.none,
+                  ),
                 ),
               ),
             ),
