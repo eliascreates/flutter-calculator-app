@@ -1,5 +1,6 @@
 import 'package:calculator_app/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class CalculatorButton extends StatelessWidget {
   const CalculatorButton(
@@ -14,8 +15,7 @@ class CalculatorButton extends StatelessWidget {
   // final width
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(kDefaultPadding),
+    return ZoomTapAnimation(
       onTap: onPress,
       child: Container(
         margin: EdgeInsets.all(kDefaultPadding * 0.2),
