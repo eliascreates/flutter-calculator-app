@@ -69,6 +69,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
                           _calculator.result += calculatorSymbols[index];
                           _calculator.operator = calculatorSymbols[index];
+
+                          if (_calculator.result[0] == "0") {
+                            _calculator.result =
+                                _calculator.result.substring(1);
+                          }
                         });
                       },
                       symbol: calculatorSymbols[index],

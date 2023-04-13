@@ -12,10 +12,11 @@ class CalculatorButton extends StatelessWidget {
   final String symbol;
   final Color color;
   final VoidCallback onPress;
-  // final width
+
   @override
   Widget build(BuildContext context) {
     return ZoomTapAnimation(
+      endDuration: const Duration(milliseconds: 20),
       onTap: onPress,
       child: Container(
         margin: EdgeInsets.all(kDefaultPadding * 0.2),
